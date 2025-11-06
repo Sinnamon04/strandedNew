@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 30ce0a74aa3ca06468befff3f522a3ce
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - image: {instanceID: 0}
+  - countText: {instanceID: 0}
+  - inventoryManager: {instanceID: 0}
+  - parentAfterDrag: {instanceID: 0}
+  - item: {instanceID: 0}
+  - healths: {instanceID: 0}
+  - hungers: {instanceID: 0}
+  - droppedItemPrefab: {fileID: 1157031350675021637, guid: 8ea527a603794f744b9197e40cbeadfc, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

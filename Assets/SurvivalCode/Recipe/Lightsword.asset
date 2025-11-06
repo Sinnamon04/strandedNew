@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e10c43fbf4082c543990565f8f8a1cb8, type: 3}
+  m_Name: Lightsword
+  m_EditorClassIdentifier: 
+  vector: {x: 5, y: 4}
+  itemType: 0
+  attackType: 0
+  actionType: 1
+  equipmentType: 5
+  defenseBonus: 2
+  attackBonus: 3
+  strengthBonus: 4
+  healthBonus: 2
+  staminaBonus: 4
+  weaponPrefab: {fileID: 0}
+  stackable: 1
+  ID: 6baa995f-7269-4b03-9d3e-c7cad8cb322b
+  image: {fileID: 21300000, guid: ede6b3f13c1ba104d98b572ce8728df1, type: 3}
+  itemModel: {fileID: 0}
+  itemName: 
+  price: 0

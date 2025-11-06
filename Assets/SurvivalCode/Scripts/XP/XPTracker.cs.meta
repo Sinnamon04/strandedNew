@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 08e268515f36a8348b2ebbea9f560d54
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - XPTranslationType: {fileID: 11400000, guid: 623d758199a141f449c9635e641a2e42, type: 2}
+  - CurrentLevelText: {instanceID: 0}
+  - CurrentXPText: {instanceID: 0}
+  - XPToNextLevelText: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
