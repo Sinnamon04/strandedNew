@@ -4,8 +4,8 @@ using UnityEngine.UI; // Required for using UI elements like Text
 
 public class GameManager : MonoBehaviour
 {
-    public DayNightController dayNightController; // Reference to your DayNightCycle script
-    public int daysToWin = 3; // The number of days the player needs to survive to win
+    public DayNightController dayNightController; // Reference to the DayNightCycle script
+    public int daysToWin = 3; 
     public TextMeshProUGUI winText; // A UI Text element to display the win message
 
     public GameObject victory;
