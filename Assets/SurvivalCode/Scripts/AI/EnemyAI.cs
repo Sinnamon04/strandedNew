@@ -9,13 +9,15 @@ namespace Platformers
 
     public class EnemyAI : MonoBehaviour
     {
+
+        // References to the NavMeshAgent, player transform, and projectile prefab
         [Header("References")]
         [SerializeField] private NavMeshAgent navAgent;
         [SerializeField] private Transform playerTransform;
         [SerializeField] private Transform firePoint;
         [SerializeField] private GameObject projectilePrefab;
 
-
+        // Layer masks for terrain and player detection for navmesh surface
         [Header("Layers")]
         [SerializeField] private LayerMask terrainLayer;
         [SerializeField] private LayerMask playerLayerMask;
@@ -41,7 +43,7 @@ namespace Platformers
         [SerializeField] private float visionRange = 20f;
         [SerializeField] private float engagementRange = 10f;
 
-
+        // Internal state variables
         private bool isPlayerVisible;
         private bool isPlayerInRange;
         public float health;
@@ -52,7 +54,7 @@ namespace Platformers
         {
             if (playerTransform == null)
             {
-                GameObject playerObj = GameObject.Find("Player");
+                GameObject playerObj = GameObject.Find("FPSController");
                 if (playerObj != null)
                 {
                     playerTransform = playerObj.transform;
@@ -95,7 +97,7 @@ namespace Platformers
             isPlayerVisible = Physics.CheckSphere(transform.position, visionRange, playerLayerMask);
             isPlayerInRange = Physics.CheckSphere(transform.position, engagementRange, playerLayerMask);
         }
-
+        // Method to handle taking damage from the player
         public void TakeDamage(int damage)
         {
             health -= damage;
@@ -112,7 +114,7 @@ namespace Platformers
         }
 
 
-
+        // Method to fire a projectile towards the player - by creating a rigidbody and applying forces
         private void FireProjectile()
         {
             if (projectilePrefab == null || firePoint == null) return;
@@ -122,11 +124,11 @@ namespace Platformers
             projectileRb.AddForce(transform.forward * forwardShotForce, ForceMode.Impulse);
             projectileRb.AddForce(transform.up * verticalShotForce, ForceMode.Impulse);
 
-
+            // destroy the projectile after 3 seconds to prevent clutter
             Destroy(projectileRb.gameObject, 3f);
         }
 
-
+        // Method to find a random patrol point within the patrol radius
         private void FindPatrolPoint()
         {
             float randomX = Random.Range(-patrolRadius, patrolRadius);
@@ -143,7 +145,7 @@ namespace Platformers
             }
         }
 
-
+        // Coroutine to handle attack cooldown timing to prevent continuous attacks
         private System.Collections.IEnumerator AttackCooldownRoutine()
         {
             isOnAttackCooldown = true;
@@ -196,7 +198,7 @@ namespace Platformers
             }
         }
 
-
+        // Method to update the enemy's behavior based on player detection
         private void UpdateBehaviourState()
         {
             if (!isPlayerVisible && !isPlayerInRange)
