@@ -7,22 +7,21 @@ using UnityEngine.AI;
 namespace Platformers
 {
 
-    
-
-
     public class NormalAI : MonoBehaviour
     {
+
+        // References to the NavMeshAgent and player transform
         [Header("References for AI")]
         [SerializeField] private NavMeshAgent navAgent;
         [SerializeField] private Transform playerTransform;
-      
 
 
+        // Layer masks for terrain and player detection
         [Header("Layers")]
         [SerializeField] private LayerMask terrainLayer;
         [SerializeField] private LayerMask playerLayerMask;
 
-
+        // Patrol settings
         [Header("Patrols")]
         [SerializeField] private float patrolRadius = 10f;
         private Vector3 currentPatrolPoint;
@@ -35,12 +34,12 @@ namespace Platformers
         [SerializeField] private float visionRange = 20f;
         [SerializeField] private float engagementRange = 10f;
 
-
+        // Internal state variables to check player visibility and range
         private bool isPlayerVisible;
         private bool isPlayerInRange;
- 
 
 
+        // Initialization if playerTransform or navAgent are not assigned in the inspector
         private void Awake()
         {
             if (playerTransform == null)
@@ -59,15 +58,15 @@ namespace Platformers
             }
         }
 
-
+        // Main update loop to detect player and update AI behavior
         private void Update()
         {
             DetectPlayer();
             UpdateBehaviourState();
         }
 
-       
 
+        // Visualize detection ranges in the editor
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
@@ -78,17 +77,14 @@ namespace Platformers
             Gizmos.DrawWireSphere(transform.position, visionRange);
         }
 
-
+        // Method to detect if the player is visible or within engagement range
         private void DetectPlayer()
         {
             isPlayerVisible = Physics.CheckSphere(transform.position, visionRange, playerLayerMask);
             isPlayerInRange = Physics.CheckSphere(transform.position, engagementRange, playerLayerMask);
         }
 
-        
-
-
-        
+        // Method to find a random patrol point within the patrol radius
 
         private void FindPatrolPoint()
         {
@@ -107,8 +103,7 @@ namespace Platformers
         }
 
 
-   
-
+ 
         private void PerformPatrol()
         {
             if (!hasPatrolPoint)
@@ -132,10 +127,7 @@ namespace Platformers
             }
         }
 
-
-        
-
-
+        // Method to update AI behavior based on player detection
         private void UpdateBehaviourState()
         {
             if (!isPlayerVisible && !isPlayerInRange)
