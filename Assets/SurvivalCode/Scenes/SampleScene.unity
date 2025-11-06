@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e604b25c0ce16449ae7292b86838cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayNightController: {fileID: 0}
+  dayNightController: {fileID: 1254732242}
   daysToWin: 3
   winText: {fileID: 287389523}
   victory: {fileID: 891249580}
@@ -9931,7 +9931,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1209514947}
   m_HandleRect: {fileID: 1209514946}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -11064,7 +11064,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1758426961}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9873914
+  m_Size: 0.944235
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -12684,7 +12684,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000019073486, y: 0.0010019803}
+  m_AnchoredPosition: {x: -0.000019073486, y: 1.6294996}
   m_SizeDelta: {x: -0.0004, y: 369.64}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1490631877
