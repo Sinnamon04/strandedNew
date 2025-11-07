@@ -60,7 +60,7 @@ namespace Platformers
                     characterStatss.BaseStrength = characterStatss.BaseStrengthPerLevel * xpTracker.level + characterStatss.BaseStrengthOffset;
 
                 }
-                Debug.Log(xpTranslation.CurrentLevel);
+                
                 
 
             }

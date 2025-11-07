@@ -35,19 +35,20 @@ namespace Platformers
         public void OnEnable()
         {
                 HealthManager.PlayerDead += ShowGameOverScreen;    
-                StaminaManager.PlayerStarved += ShowGameOverScreen;
+                
             
         }
 
         private void OnDisable()
         {
                 HealthManager.PlayerDead -= ShowGameOverScreen;
-                StaminaManager.PlayerStarved -= ShowGameOverScreen;
+                
             
         }
 
         void ShowGameOverScreen()
         {
+            Time.timeScale = 0f;
             if (gameOverScreen != null) // Check if the UI element still exists
             {
                 enables = true;
@@ -64,10 +65,13 @@ namespace Platformers
         // restarts the current scene
         public void RestartGame()
         {
+            Time.timeScale = 1f;
+           
 
-            enables = false;
+            // Deactivate the game over screen to prevent a flicker before the scene reloads
+            gameOverScreen.SetActive(false);
+
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
         }
     }
 }

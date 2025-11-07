@@ -402,37 +402,7 @@ namespace Platformers
                     Destroy(hit.gameObject);
                 }
             }
-            //if (hit.gameObject.CompareTag("Mineable"))
-            //{
-            //    Debug.Log("Collided with Mineable");
-            //    if (hit.gameObject.TryGetComponent<ItemObjects>(out var itemObject))
-            //    {
-            //        Debug.Log("Picking up item");
-
-
-            //        inventoryManager.AddItems(itemObject.item);
-
-            //        // Add item to player's inventory
-            //        Destroy(hit.gameObject);
-            //    }
-            //}
-            //if (hit.gameObject.CompareTag("Projectile"))
-            //{
-
-            //    Debug.Log("fwfefw");
-            //    // Try to get the Projectile component from the object we hit
-            //    Projectile projectile = hit.gameObject.GetComponent<Projectile>();
-
-
-            //    if (projectile != null)
-            //    {
-            //        // Apply damage from the projectile's damage value
-            //        healthManager.TakeDamage(projectile.damage);
-            //    }
-
-            //    // Destroy the projectile after it hits the player
-            //    Destroy(hit.gameObject, 2.0f);
-            //}
+            
         }
 
 
@@ -478,7 +448,7 @@ namespace Platformers
 
 
         // Enable or disable player controls normally when opening UI menus
-        public void SetControlsEnabled(bool enabled)
+        public void SetControlsEnabled(bool enabled = true)
         {
 
             controlsEnabled = enabled;

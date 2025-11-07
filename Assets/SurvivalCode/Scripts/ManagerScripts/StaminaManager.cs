@@ -15,7 +15,7 @@ namespace Platformers
         [Range(0, 100)] // Clamp hunger value in inspector
         public float hunger = 100f; 
         public float maxHunger = 100f; 
-        public static event Action PlayerStarved;
+        //public static event Action PlayerStarved;
 
         [Header("Hunger Drain")]
         public int hungerDrainPerTick = 1; 
@@ -91,7 +91,7 @@ namespace Platformers
                 
                     hunger = 0f;
 
-                    PlayerStarved?.Invoke();
+                    
                     hungerBar.fillAmount = 0f / 100f;
                 
                 
