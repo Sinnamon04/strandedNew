@@ -756,11 +756,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 04aef0d6-f3ef-4028-968f-9c5b52966ea9
+  cloudProjectId: 1f00d691-8101-4471-bd7a-131ceae5181a
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Survival Game (2)
-  organizationId: krrishshah09
+  projectName: Survival Game (1)
+  organizationId: tea12121
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
