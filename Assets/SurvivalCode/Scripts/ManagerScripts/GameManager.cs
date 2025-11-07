@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
     }
 
     // Handles the win condition
-    void TriggerWin()
+    public void TriggerWin()
     {
         // Display the win message
         if (victory != null)
