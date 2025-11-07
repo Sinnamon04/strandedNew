@@ -1,4 +1,3 @@
-// MineableResource.cs
 using UnityEngine;
 
 namespace Platformers 
@@ -59,7 +58,7 @@ namespace Platformers
                     
                     GameObject droppedGameObject = Instantiate(droppedItemPrefab, targetDropPosition, Quaternion.identity);
 
-                    // Assign the item data to the dropped item object
+                    // Assigns the item data to the dropped item object
                     ItemObjects itemObjectComponent = droppedGameObject.GetComponent<ItemObjects>();
                     // Check if the component exists before using it and assign the item data   
                     if (droppedGameObject.TryGetComponent<ItemObjects>(out _))

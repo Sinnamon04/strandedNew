@@ -12,7 +12,7 @@ namespace Platformers
         public float coins;
         public TextMeshProUGUI coinsTxt;
 
-        // Assign this in the Inspector!
+   
         [SerializeField] private FirstPersonController playerController;
         public ScrollRect itemScrollView;
 

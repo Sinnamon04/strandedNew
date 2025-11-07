@@ -19,7 +19,7 @@ namespace Platformers
         [SerializeField] private float sprintMultiplier = 2f;
         [SerializeField] private float jumpHeight = 5.0f;
         [SerializeField] private float gravity = 9.81f;
-        [SerializeField] private InputActionAsset playerActions; // Assign your Input Action Asset here
+        [SerializeField] private InputActionAsset playerActions; 
         private InputAction moveAction;
         private InputAction jumpAction;
         private InputAction sprintAction;
@@ -37,8 +37,7 @@ namespace Platformers
         [SerializeField] private ShopManager shopManager;
         [HideInInspector] public static bool isInventoryOpen = false;
         public float mineDistance = 3f; // How far the player can mine
-        public LayerMask mineableLayer; // Assign this in the Inspector to only hit mineable objects
-        
+        public LayerMask mineableLayer;         
 
         private bool canMine = true; // To prevent spamming mining
         public float mineRate = 1f; // How often the player can mine (seconds between mines)
@@ -257,7 +256,7 @@ namespace Platformers
 
                 Debug.Log("hit");
                 // --- THIS IS THE NEW LOGIC ---
-                // Check the flag from your WeaponController.
+               
                 if (weaponController != null && weaponController.isDefending)
                 {
                     // --- DEFENDING LOGIC ---

@@ -106,12 +106,6 @@ public class DayNightController : MonoBehaviour
         }
     }
 
-    private void WinGame()
-    {
-        isGameWon = true;
-        Debug.Log("YOU WIN! You survived " + daysToWin + " days.");
-
-
-    }
+   
 
 }

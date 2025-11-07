@@ -78,7 +78,7 @@ namespace Platformers
         private void SwordAttack()
         {
             if (GameManager.isInventoryOpen || GameManager.IsShopOpen) return;
-            if (GameManager.enables) return; // Uncomment if you have this manager
+            if (GameManager.enables) return; 
             if (CanAttack)
             {
                 isAttacking = true;
@@ -108,7 +108,7 @@ namespace Platformers
         private void SwordDefend()
         {
             if (GameManager.isInventoryOpen || GameManager.IsShopOpen) return;
-            if (GameManager.enables) return; // Uncomment if you have this manager
+            if (GameManager.enables) return; 
             if (CanDefend)
             {
                 isDefending = true;

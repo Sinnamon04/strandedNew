@@ -9,7 +9,7 @@ namespace Platformers
     public class StaminaManager : MonoBehaviour
     {
         [Header("UI")]
-        public Image hungerBar; // Assign your UI Image here
+        public Image hungerBar; 
 
         [Header("Hunger Settings")]
         [Range(0, 100)] // Clamp hunger value in inspector
