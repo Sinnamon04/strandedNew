@@ -11,5 +11,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/SurvivalCode/Scenes/SampleScene.unity
     guid: 4e6bace04a11cdd4899590839bb4177b
+  - enabled: 1
+    path: Assets/SkyTest/SkyTest.unity
+    guid: 0ddda56a397eb934f8cd3c2f8693fc4d
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
