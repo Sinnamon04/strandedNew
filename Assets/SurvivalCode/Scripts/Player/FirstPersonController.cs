@@ -61,10 +61,7 @@ namespace Platformers
         public LayerMask attackLayer;
         public GameObject hitEffect;    
 
-        bool attacking = false;
-        bool readyToAttack = true;  
-        bool defending = false;
-        int attackCount;
+        
 
         public float interactionDistance = 4f;
 
@@ -72,14 +69,14 @@ namespace Platformers
         public const string ANIMATION_ATTACK_01 = "Attack_01";
         public const string ANIMATION_ATTACK_02 = "Attack_02";
 
-        string currentAnimationState;
-
-
+       
         
         public bool controlsEnabled = true; 
 
         void Awake()
         {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
             inventoryMenu = GameObject.Find("MainInvenGroup");
             inventoryMenu.SetActive(false);
 
@@ -130,7 +127,7 @@ namespace Platformers
         // Mining method based on raycasting from the camera
         public void Mine()
         {
-            if (!canMine || isInventoryOpen) return; // Don't mine if not ready or inventory is open
+            if (!canMine || GameManager.isInventoryOpen) return; // Don't mine if not ready or inventory is open
 
             
             
@@ -160,22 +157,13 @@ namespace Platformers
         }
 
 
-        public void Attack() {
-            
-            
-            if (!readyToAttack || attacking) return;
-
-            readyToAttack = false;
-            attacking = true;
-
-           
-
-        }
+       
         // Handles right-click interaction with NPCs
         private void HandleRightClickInteract()
         {
-            if (isInventoryOpen || !controlsEnabled)
+            if (GameManager.isInventoryOpen || !controlsEnabled)
             {
+                Debug.Log("Cannot interact right now.");
                 // Don't interact if inventory is open, game is paused, or controls are disabled
                 return;
             }
@@ -187,12 +175,12 @@ namespace Platformers
             // Check if the ray hits an enemy object within a certain distance
             if (Physics.Raycast(ray, out hit, attackDistance, npcLayer)) // Reuse attackDistance for interaction range
             {
-
+                Debug.Log("Interacted with: " + hit.collider.name);
                 // Check if the hit object has a NormalAI component
                 NormalAI enemyHealth = hit.collider.GetComponent<NormalAI>();
                 if (enemyHealth != null)
                 {
-                    
+                    Debug.Log("Interacted with NPC: " + enemyHealth);
                     shopManager.gameObject.SetActive(true);
                     shopManager.ShowCoinsText();
                     shopManager.OpenShop();
@@ -219,39 +207,7 @@ namespace Platformers
         }
 
 
-        // Resets the attack state after an attack is completed
-        public void ResetAttack() {
-
-            Debug.Log("Reset Attack " + isInventoryOpen);
-            attacking = false;
-            readyToAttack = true;
-        }
-
-        // Resets the defend state after defending
-        public void ResetDefend() {
-            Debug.Log("Reset Defend " + isInventoryOpen);
-            defending = false;
-
-        }
-
-
-        // Changes the animation state with crossfade
-        public void ChangeAnimationState(string newState) {
-            if (currentAnimationState == newState) return;
-
-            currentAnimationState = newState;
-            animator.CrossFade(currentAnimationState, 0.1f);
-        }
-
-
-        public void Defend()
-        {
-
-            defending = !defending;
-            animator.SetBool("isDefending", defending);
-
-        }
-
+       
         // Enable and disable input actions 
         private void OnEnable()
         {
@@ -273,8 +229,7 @@ namespace Platformers
             jumpAction.Enable();
             sprintAction.Enable();
             lookAction.Enable();
-            attackAction.Enable();
-            defendAction.Enable();
+
             mineAction.Enable();
             interaction.Enable();
             interaction.performed += ctx => HandleRightClickInteract();
@@ -286,26 +241,12 @@ namespace Platformers
             jumpAction.Disable();
             sprintAction.Disable();
             lookAction.Disable();
-            attackAction.Disable();
-            defendAction.Disable();
+
             mineAction.Disable();
             interaction.Disable();
             interaction.performed -= ctx => HandleRightClickInteract();
         }
-        //private void OnTriggerEnter(Collider other) // Or void OnTriggerEnter2D(Collider2D other) for 2D
-        //{
-        //    // You'd add logic here for picking up the item
-        //    // For example:
-        //    if (other.CompareTag("FPSController"))
-        //    {
-
-        //        Debug.Log("Picking up item");
-
-
-        //        // Add item to player's inventory
-        //        Destroy(gameObject);
-        //    }
-        //}
+        
 
         // Handle collisions with projectiles so that the player can take damage or block them
         private void OnCollisionEnter(Collision collision)
@@ -330,6 +271,7 @@ namespace Platformers
                     Debug.Log("HIT! Player took damage from a projectile.");
                     Debug.Log(healthManager.health);
                     Debug.Log(healthManager.maxHealth);
+                    // Try to get the Projectile component to access damage value.
 
                     if (collision.gameObject.TryGetComponent<Projectile>(out var projectile))
                     {
@@ -413,19 +355,22 @@ namespace Platformers
 
             if (Keyboard.current.eKey.wasPressedThisFrame)
             {
-                if (ShopManager.isShopOpen) return;
+                // Prevent opening inventory if shop is open
+                if (GameManager.IsShopOpen) return;
                
                 if (inventoryMenu.activeSelf)
                 {
                     inventoryMenu.SetActive(false);
                     SetControlsEnabled(true); // Re-enable controls when closing inventory
                     isInventoryOpen = false;
+                    GameManager.isInventoryOpen = false;
                 }
                 else
                 {
                     inventoryMenu.SetActive(true);
                     SetControlsEnabled(false); // Disable controls when opening inventory
                     isInventoryOpen = true;
+                    GameManager.isInventoryOpen = true;
                 }
             }
 

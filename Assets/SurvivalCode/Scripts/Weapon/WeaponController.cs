@@ -77,8 +77,8 @@ namespace Platformers
         // --- Sword Attack Logic ---
         private void SwordAttack()
         {
-            if (FirstPersonController.isInventoryOpen || ShopManager.isShopOpen) return;
-            if (UIManager.enables) return; // Uncomment if you have this manager
+            if (GameManager.isInventoryOpen || GameManager.IsShopOpen) return;
+            if (GameManager.enables) return; // Uncomment if you have this manager
             if (CanAttack)
             {
                 isAttacking = true;
@@ -107,8 +107,8 @@ namespace Platformers
         // --- Sword Defend Logic ---
         private void SwordDefend()
         {
-            if (FirstPersonController.isInventoryOpen || ShopManager.isShopOpen) return;
-            if (UIManager.enables) return; // Uncomment if you have this manager
+            if (GameManager.isInventoryOpen || GameManager.IsShopOpen) return;
+            if (GameManager.enables) return; // Uncomment if you have this manager
             if (CanDefend)
             {
                 isDefending = true;
@@ -138,15 +138,15 @@ namespace Platformers
         private void MineAction()
         {
             // These checks prevent mining while a menu is open
-            if (FirstPersonController.isInventoryOpen || ShopManager.isShopOpen) return;
-            if (UIManager.enables) return; // Uncomment if you have this manager
+            if (GameManager.isInventoryOpen || GameManager.IsShopOpen) return;
+            if (GameManager.enables) return; 
 
             if (CanMine)
             {
                 isMining = true;
                 CanMine = false;
-                Animator anim = Sword.GetComponent<Animator>(); // Assumes the pickaxe has an Animator
-                anim.SetTrigger("Attack"); // You will need a "Mine" trigger in your Animator
+                Animator anim = Sword.GetComponent<Animator>(); 
+                anim.SetTrigger("Attack"); 
                 StartCoroutine(ResetMine());
             }
         }

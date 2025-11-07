@@ -6,7 +6,7 @@ namespace Platformers
 {
     public abstract class BaseXPTranslations : ScriptableObject
     {
-
+        // XP and Leveling System for different skills or attributes
         public int CurrentXP { get; protected set; } = 0;
         public int CurrentLevel { get; protected set; } = 1;
         public int Level { get; protected set; } = 1;
@@ -18,7 +18,7 @@ namespace Platformers
 
         protected abstract int GetXRequiredForNextLevel();
 
-   
+        // Method to add XP and handle level ups
 
         public abstract bool AddXP(int amount);
 

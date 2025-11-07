@@ -15,7 +15,7 @@ namespace Platformers
         public TextMeshProUGUI countText;
         public InventoryManager inventoryManager;
 
-
+        // Drag and Drop Variables
         [HideInInspector] public Transform parentAfterDrag;
         [HideInInspector] public int count = 1;
         [HideInInspector] public Item item;
@@ -30,7 +30,7 @@ namespace Platformers
         }
 
 
-        // Drag and Drop Functionality
+        // Drag and Drop Functionality the item allows itself to be dragged around the crafting table
         public void OnBeginDrag(PointerEventData eventData)
         {
             image.raycastTarget = false;

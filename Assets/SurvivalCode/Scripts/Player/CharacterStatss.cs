@@ -7,6 +7,7 @@ namespace Platformers
 {
     public class CharacterStatss : MonoBehaviour
     {
+        // Character stats like stamina, health, strength, defense etc.
         [SerializeField] public int StaminaToHealthConversion = 5;
         [SerializeField] public int BaseStaminaPerLevel = 5;
         [SerializeField] public int BaseStaminaOffset = 10;
@@ -24,6 +25,9 @@ namespace Platformers
         [SerializeField] public TextMeshProUGUI StrengthText;
         [SerializeField] public TextMeshProUGUI DefenseText;
         [SerializeField] EquipmentSlot[] EquipmentSlots;
+
+
+        // Base stats that get modified by level and equipment
         public int BaseStamina { get;  set; } = 0;
         public int BaseHealth { get; set; } = 0;
 
@@ -31,6 +35,8 @@ namespace Platformers
 
         public int BaseDefense { get; set; } = 0;
 
+
+        // Calculated stats that include base stats and equipment bonuses
         public int Stamina
         {
             get
@@ -64,6 +70,7 @@ namespace Platformers
             }
         }
 
+        // Method to update stats when the character levels up
         public void OnUpdateLevel(int previousLevel,int currentLevel)
         {
             BaseStamina = BaseStaminaPerLevel * currentLevel + BaseStaminaOffset;

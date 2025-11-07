@@ -14,15 +14,15 @@ namespace Platformers
         [SerializeField] private Camera mainCamera;
         [SerializeField] private Transform targets;
 
-
+        // Updates the healthbar slider based on current and maximum health values
         public void UpdateHealthbar(float currentValue,float maxValue) {
 
             slider.value = currentValue / maxValue;
 
 
         }
-  
-       
+
+        // changes the healthbar rotation based on camera position
         void Update()
         {
             

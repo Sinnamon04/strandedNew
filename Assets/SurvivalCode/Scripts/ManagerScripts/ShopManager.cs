@@ -145,6 +145,7 @@ namespace Platformers
             UnityEngine.Cursor.lockState = CursorLockMode.None;
             UnityEngine.Cursor.visible = true;
             isShopOpen = true;
+            GameManager.IsShopOpen = true;
             ShowCoinsText();
             
         }
@@ -161,6 +162,7 @@ namespace Platformers
             UnityEngine.Cursor.lockState = CursorLockMode.Locked;
             UnityEngine.Cursor.visible = false;
             isShopOpen = false;
+            GameManager.IsShopOpen = false;
             closeButton.gameObject.SetActive(false);
             HideCoinsText();
 

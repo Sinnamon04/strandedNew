@@ -13,11 +13,31 @@ public class GameManager : MonoBehaviour
     private int currentDay = 0;
     private float previousTimeOfDay = 0;
     private bool hasWon = false;
+    public static bool isInventoryOpen = false;
+    public static bool IsShopOpen = false;
+    public static bool IsGameOver = false;
+    public static bool enables = false;
 
+    public static bool IsPlayerInputFrozen = false;
+
+    // Initialize static variables
     void Awake()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        IsPlayerInputFrozen = false;
+        isInventoryOpen = false;
+        IsShopOpen = false;
+        IsGameOver = false;
+        enables = false;
+
+        Time.timeScale = 1f;
+        
+
+
         // Ensure the win text is hidden at the start of the game
         victory.gameObject.SetActive(false);
+
     }
 
     void Update()
@@ -41,6 +61,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // Handles the win condition
     void TriggerWin()
     {
         // Display the win message

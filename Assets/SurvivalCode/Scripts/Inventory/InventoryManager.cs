@@ -9,7 +9,7 @@ namespace Platformers
     {
 
 
-        // Start is called before the first frame update
+        // sets up inventory slots and item adding/removing functionality and the stack size
 
         public InventorySlot[] inventorySlots;
         public GameObject inventoryPrefab;
@@ -19,6 +19,7 @@ namespace Platformers
         private Camera mainCamera;
         [SerializeField] private Transform weaponHolder;
 
+        // Input Action Asset for hotbar controls
         [SerializeField] private InputActionAsset Hotbar;
 
         [HideInInspector] private InputAction hotbar1Action;
@@ -27,7 +28,7 @@ namespace Platformers
         [HideInInspector] private InputAction hotbar4Action;
         [HideInInspector] private InputAction hotbar5Action;
         private GameObject currentWeaponObject = null;
-        [SerializeField] private WeaponSwitching weaponSwitcher;
+      
 
         public void Awake()
         {
@@ -45,7 +46,7 @@ namespace Platformers
 
             ChangeSelectedSlot(0);
         }
-
+        // enables and disables input actions and subscribes to events
         public void OnEnable()
         {
             
@@ -91,8 +92,8 @@ namespace Platformers
 
             inventorySlots[newValue].Select();
             selectedSlot = newValue;
-           
-            
+
+            // Destroy current weapon object if it exists
             if (currentWeaponObject != null)
             {
                 Destroy(currentWeaponObject);
@@ -101,16 +102,11 @@ namespace Platformers
 
             InventoryItem itemInSlot = inventorySlots[selectedSlot].GetComponentInChildren<InventoryItem>();
 
-            if (weaponSwitcher != null)
-            {
-         
-                weaponSwitcher.SelectWeapon(selectedSlot);
-            }
            
         }
 
 
-        // adds items to inventory
+        // adds items to inventory based on stackability and max stack size
         public bool AddItems(Item item)
         {
 
@@ -130,7 +126,7 @@ namespace Platformers
                 }
             }
 
-
+            // looks for empty slot to add new item
             for (int i = 0; i < inventorySlots.Length; i++)
             {
                 InventorySlot slot = inventorySlots[i];

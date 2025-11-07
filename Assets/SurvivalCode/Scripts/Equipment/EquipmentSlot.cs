@@ -28,6 +28,8 @@ namespace Platformers
             }
         }
 
+        // Handles the drop event when an item is dropped into this equipment slot.
+
         public void OnDrop(PointerEventData eventData)
         {
             
@@ -42,7 +44,7 @@ namespace Platformers
 
 
 
-            
+            // Check if the dropped item's equipment type matches this slot's type.
             if (item.item.equipmentType == this.slotType)
             {
 
@@ -55,7 +57,7 @@ namespace Platformers
             }
             
         }
-
+        // Updates the character's stats based on the currently equipped items.
         public void UpdateEquipmentStats()
         {
             // We use a small delay to ensure the UI parenting has finished before we calculate.

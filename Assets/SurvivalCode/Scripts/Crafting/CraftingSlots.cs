@@ -8,17 +8,19 @@ namespace Platformers
 {
     public class CraftingSlots : MonoBehaviour, IDropHandler
     {
-        
+
+        // UI Elements
+
         public Image image;
 
-        private CharacterStatss characterStatss;
+        private CharacterStatss characterStats;
 
         public EquipmentSlot[] equipmentSlots;
         public BaseXPTranslations xpTranslation;
         [SerializeField] private XPTracker xpTracker;
         private void Awake()
         {
-            characterStatss = GameObject.Find("Characters").GetComponent<CharacterStatss>();
+            characterStats = GameObject.Find("Characters").GetComponent<CharacterStatss>();
         }
 
         // When the item is dropped into the slot chosen
@@ -29,28 +31,29 @@ namespace Platformers
             {
                 if (equipmentSlots[i].GetComponentInChildren<InventoryItem>() != null)
                 {
-                    characterStatss.BaseStrength -= equipmentSlots[i].GetComponentInChildren<InventoryItem>().item.strengthBonus;
+                    characterStats.BaseStrength -= equipmentSlots[i].GetComponentInChildren<InventoryItem>().item.strengthBonus;
                     Debug.Log("Subtracting Strength Bonus: " + equipmentSlots[i].GetComponentInChildren<InventoryItem>().item.strengthBonus);
-                    characterStatss.BaseDefense -= equipmentSlots[i].GetComponentInChildren<InventoryItem>().item.defenseBonus;
+                    characterStats.BaseDefense -= equipmentSlots[i].GetComponentInChildren<InventoryItem>().item.defenseBonus;
                     Debug.Log("Subtracting Defense Bonus: " + equipmentSlots[i].GetComponentInChildren<InventoryItem>().item.defenseBonus);
                     foundEmpty = false;
                 }
             }
 
+            // if no equipped items found, recalculate base stats from level
+
             if (foundEmpty)
             {
                 if (xpTracker != null)
                 {
-                    characterStatss.BaseDefense = characterStatss.BaseDefensePerLevel * xpTracker.level + characterStatss.BaseDefenseOffset;
-                    characterStatss.BaseStrength = characterStatss.BaseStrengthPerLevel * xpTracker.level + characterStatss.BaseStrengthOffset;
+                    characterStats.BaseDefense = characterStats.BaseDefensePerLevel * xpTracker.level + characterStats.BaseDefenseOffset;
+                    characterStats.BaseStrength = characterStats.BaseStrengthPerLevel * xpTracker.level + characterStats.BaseStrengthOffset;
                 }
 
                 
-
             }
 
-            characterStatss.StrengthText.text = $"Strength: {characterStatss.BaseStrength}";
-            characterStatss.DefenseText.text = $"Defense: {characterStatss.BaseDefense}";
+            characterStats.StrengthText.text = $"Strength: {characterStats.BaseStrength}";
+            characterStats.DefenseText.text = $"Defense: {characterStats.BaseDefense}";
 
             if (transform.childCount == 0)
             {

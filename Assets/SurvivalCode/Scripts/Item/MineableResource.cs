@@ -11,7 +11,7 @@ namespace Platformers
 
         [Header("Loot Drops")]
         public GameObject lootPrefab; // The item that will spawn when destroyed
-        public int lootAmount = 3;   // How many items to spawn
+        public int lootAmount = 3;   
 
         [SerializeField] private FloatingHealthbar healthbar;
 
@@ -26,13 +26,15 @@ namespace Platformers
             healthbar = GetComponentInChildren<FloatingHealthbar>();
             player = GameObject.Find("FPSController").GetComponent<FirstPersonController>();
         }
+
+        // Method to apply damage to the resource
         public void TakeDamage(float damageAmount)
         {
-            // Subtract the damage from our health
+            
             health -= damageAmount;
             healthbar.UpdateHealthbar(health, 50f);
 
-            // Check if the resource should be destroyed
+            
             if (health <= 0)
             {
                 DestroyResource();

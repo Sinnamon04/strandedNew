@@ -4,12 +4,14 @@ namespace Platformers
 {
     public class EquipmentManager : MonoBehaviour
     {
-        [SerializeField] private EquipmentSlot[] equipmentSlots; // Assign all your slots here
-        [SerializeField] private FirstPersonController playerController; // Assign your player
-        [SerializeField] private CharacterStatss characterStats; // Reference to character stats
+        // References to equipment slots and player stats
+        [SerializeField] private EquipmentSlot[] equipmentSlots; 
+        [SerializeField] private FirstPersonController playerController; 
+        [SerializeField] private CharacterStatss characterStats; 
         void Start()
         {
-            
+            // Initial calculation of stats based on equipped items
+
             if (equipmentSlots.Length != 0) {
                 RecalculateAllStats();
             }

@@ -9,13 +9,13 @@ namespace Platformers
     public class InventoryItem : MonoBehaviour,IBeginDragHandler, IEndDragHandler,IDragHandler,IPointerClickHandler
     {
 
-
+        
         [Header("UI")]
         public Image image;
         public TextMeshProUGUI countText;
         public InventoryManager inventoryManager;
 
-
+        // variables that is used for drag and drop functionality and item data and change health/stamina
         [HideInInspector]public Transform parentAfterDrag;
         [HideInInspector] public int count = 1;
         [HideInInspector] public Item item;
@@ -26,7 +26,7 @@ namespace Platformers
         private StaminaManager staminaManager;
         private GameObject player;
         public GameObject droppedItemPrefab;
-        private CharacterStatss characterStatss;
+        private CharacterStatss characterStats;
 
         // enables and disables input actions
         public void OnEnable()
@@ -42,6 +42,7 @@ namespace Platformers
 
         }
 
+        // finds necessary game objects and components on awake to define variables
         public void Awake()
         {
             healths = GameObject.Find("HealthManager");
@@ -49,7 +50,7 @@ namespace Platformers
             healthManager = healths.GetComponent<HealthManager>();
             staminaManager = hungers.GetComponent<StaminaManager>();
             player = GameObject.Find("FPSController");
-            characterStatss = GameObject.Find("Characters").GetComponent<CharacterStatss>();
+            characterStats = GameObject.Find("Characters").GetComponent<CharacterStatss>();
 
         }
 
@@ -71,7 +72,7 @@ namespace Platformers
             countText.gameObject.SetActive(isActive);
         }
 
-        // this section is the drag and drop functionality
+        // this section is the drag and drop functionality of the inventory item 
         public void OnBeginDrag(PointerEventData eventData)
         {
 

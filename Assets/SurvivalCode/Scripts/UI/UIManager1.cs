@@ -13,13 +13,13 @@ namespace Platformers
 
         [SerializeField] private FirstPersonController playerController;
 
-        public static bool enables = false;
 
+        // sets up references and ensures the game over screen is disabled at start
         private void Awake()
         {
             if (gameOverScreen == null)
             {
-                enabled = false; 
+                GameManager.enables = false; 
                 return;
             }
             gameOverScreen.SetActive(false);
@@ -34,8 +34,8 @@ namespace Platformers
         // enables the game over screen when the player dies or starves
         public void OnEnable()
         {
-                HealthManager.PlayerDead += ShowGameOverScreen;    
-                
+                HealthManager.PlayerDead += ShowGameOverScreen;
+
             
         }
 
@@ -51,7 +51,7 @@ namespace Platformers
             Time.timeScale = 0f;
             if (gameOverScreen != null) // Check if the UI element still exists
             {
-                enables = true;
+                GameManager.enables = true;
                 gameOverScreen.SetActive(true);
             }
             

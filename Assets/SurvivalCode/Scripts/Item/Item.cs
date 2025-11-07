@@ -13,6 +13,7 @@ namespace Platformers
       public ActionType actionType;
       public EquipmentType equipmentType;
 
+      // bonuses used for equippable items that improve player stats
       public int defenseBonus;
       public int attackBonus;
       public int strengthBonus;
@@ -32,7 +33,7 @@ namespace Platformers
       public int price;
 
     }
-
+    // Enum for different item types
     public enum ItemType
     {
         Mine,
@@ -41,14 +42,15 @@ namespace Platformers
         Consumable,
         Object
     }
-
+    // Enum for different equipment types
     public enum AttackType
     {
         Melee,
         Range,
         Misc,
     }
-    public enum ActionType 
+    // Enum for different action types
+    public enum ActionType
     {
         Dig,
         Attack,

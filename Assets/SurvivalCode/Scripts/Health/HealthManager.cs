@@ -8,7 +8,7 @@ namespace Platformers
 {
     public class HealthManager : MonoBehaviour
     {
-        
+        // Manages player health, damage, and healing mechanics
         public Image healthBar;
         public float health = 100f;
         public InputAction Heals;
@@ -28,22 +28,6 @@ namespace Platformers
         }
 
 
-        // enables and disables input actions
-
-        public void OnEnable()
-        {
-            Heals.Enable();
-            TakeDamages.Enable();
-         
-        }
-
-        public void OnDisable()
-        {
-            Heals.Disable();
-            TakeDamages.Disable();
-            
-        }
-
         // this section is for taking damage and healing
 
         public void TakeDamage(int damage)
@@ -51,7 +35,7 @@ namespace Platformers
             health -= damage;
             if (health <= 0f) {
                 health = 0f;
-                
+                // Trigger player death event
                 PlayerDead?.Invoke();
                 healthBar.fillAmount = 0f / maxHealth;
             }
@@ -60,6 +44,7 @@ namespace Platformers
 
 
         }
+        // heals the player by a specified amount
         public void Heal(int amount)
         {
             health += amount;

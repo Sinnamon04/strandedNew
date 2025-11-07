@@ -41,8 +41,8 @@ namespace Platformers
                     resource.TakeDamage(miningDamage);
                 }
             }
+            // Check if the collided object is an enemy and if the sword is currently in an attacking state.
 
-            
             else if (other.CompareTag("Enemy") && weaponController.isAttacking)
             {
                 Debug.Log("Sword hit an enemy: " + other.name);

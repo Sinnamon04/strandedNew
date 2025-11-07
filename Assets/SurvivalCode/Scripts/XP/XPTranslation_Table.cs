@@ -37,7 +37,7 @@ namespace Platformers
             return false;
             
         }
-
+        // Sets the current level directly based on the predefined table
         public override void SetLevel(int level)
         {
             CurrentLevel = 1;
@@ -54,6 +54,7 @@ namespace Platformers
             throw new System.ArgumentOutOfRangeException("level", "Level not found in XP table");
         }
 
+        // Calculates the XP required to reach the next level based on the predefined table
         protected override int GetXRequiredForNextLevel()
         {
             if (IsMaxLevel)

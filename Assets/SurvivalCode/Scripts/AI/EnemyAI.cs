@@ -49,7 +49,7 @@ namespace Platformers
         public float health;
         public float maxHealth = 120f;
 
-
+        // Initialization if playerTransform or navAgent are not assigned in the inspector
         private void Awake()
         {
             if (playerTransform == null)
@@ -68,13 +68,14 @@ namespace Platformers
             }
         }
 
-
+        // Main update loop to handle player detection and behavior updates
         private void Update()
         {
             DetectPlayer();
             UpdateBehaviourState();
         }
 
+        // Method to destroy the enemy game object normally called upon death when invoked
         private void DestroyEnemy()
         {
             Destroy(gameObject);
@@ -91,7 +92,7 @@ namespace Platformers
             Gizmos.DrawWireSphere(transform.position, visionRange);
         }
 
-
+        // Method to detect the player within vision and engagement ranges
         private void DetectPlayer()
         {
             isPlayerVisible = Physics.CheckSphere(transform.position, visionRange, playerLayerMask);

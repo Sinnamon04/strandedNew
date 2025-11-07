@@ -15,7 +15,7 @@ namespace Platformers
         [Range(0, 100)] // Clamp hunger value in inspector
         public float hunger = 100f; 
         public float maxHunger = 100f; 
-        //public static event Action PlayerStarved;
+       
 
         [Header("Hunger Drain")]
         public int hungerDrainPerTick = 1; 
@@ -32,10 +32,10 @@ namespace Platformers
         public InputAction starvation;   
 
         private bool isHungerDraining = false; 
-        private bool isHealthDraining = false; 
+        private bool isHealthDraining = false;
 
-        
 
+        // Updates hunger and starts hunger drain on start
         void Start()
         {
             hunger = maxHunger; 
@@ -51,17 +51,11 @@ namespace Platformers
             }
         }
 
-        public void OnEnable()
-        {
-            rejuvenation.Enable();
-            starvation.Enable();
-            
-        }
+        
 
         public void OnDisable()
         {
-            rejuvenation.Disable();
-            starvation.Disable();
+          
             
             CancelInvoke();
             isHungerDraining = false;
